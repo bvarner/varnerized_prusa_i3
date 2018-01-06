@@ -1,4 +1,4 @@
-# Varnerized Prusa i3 - An inexpensive Prusa i3 (3-D Printer) clone.
+# Varnerized Prusa i3 3D Printer Clone
 
 I recently got some hands-on time with a Prusa i3 MK2 (the office got one).
 I've been keeping an eye on this space for a while now. The concept of additive manufacturing is appealing to me, but I also wanted a bit of 'hands-on' time with smaller devices to see if I could scale it up to shop-built CNC.
