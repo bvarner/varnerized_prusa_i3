@@ -14,7 +14,7 @@
 */
 
 // Select which sector to print ([1-2], or 0 for the full-size frame)
-sector = 1;
+sector = 0;
 
 // Final thickness of the frame.
 thickness = 3;
