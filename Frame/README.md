@@ -1,5 +1,5 @@
 # Varnerized Prusa i3 Clone
-## Frame & X-Y Carriage
+## MK3 - Frame & X-Y Carriage
 
 This frame can accomodate original prusa 250x210 heatbeds (the MK42 or MK43). 
 You'll need a build surface of 250x210 to print some of these.
