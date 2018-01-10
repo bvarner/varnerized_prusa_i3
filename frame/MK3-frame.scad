@@ -21,14 +21,13 @@ thickness = 3;
 
 /* -- About the .dxf --
     I started with the .dxf obtained from the original Prusa github repo.
-    This was opened with TrueView, where I adjusted layer0's color to 'black', and plotted the drawing to a high-res PDF on A2 size paper at a 1:1 ratio.
-    This PDF was imported into inkscape, where the vectors were ungrouped and split between the frame and carriage, and the PRUSA lettering removed (because it causes issues importing the .dxf in OpenSCAD)
-    From Inkscape, the https://www.thingiverse.com/thing:25036 extension was used to convert the SVG to OpenSCAD modules.
+    This was opened with DraftSight, where I traced the splines as polylines, so I could import them cleanly into OpenSCAD.
     
-    I then went through and identified the modules and applied a proper difference() {} in the generated openscad code.
+    Prior attempts (dxf -> pdf -> svg, dxf->svg, etc.) all were 'off' with scaling artifacts.
 */
 module layer() {
-    include<MK3-frame-full.scad>;
+linear_extrude(thickness, convexity = 10)
+    import("MK3v8b-frame.dxf", convexity = 10, layer = "0", $fn = 100);
 }
 
 // The frame is rougly 400x400.
