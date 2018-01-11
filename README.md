@@ -22,7 +22,7 @@ The 'master' branch here will reflect the current (stable, functioning) state of
 The 'development' branch will track be the next iteration of updates / upgrades. 
 Other branches are likely to be sandboxes for testing things. ;-)
 
-# v1.0.0 - Initial Design
+# 0.1.0 - Hybrid MK2s & MK3
 
 * Heat-Bed - I chose a 3mm thick aluminum MK3 (Ultimaker clone).
     * This gives me a slightly smaller build area than an Original Prusa.
