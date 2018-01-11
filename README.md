@@ -59,7 +59,7 @@ All Printed Parts and modifications are included in OpenSCAD + STL Form.
 
 | Part | Quantity |
 | ---- | --------:| 
-| extruder-body.stl | 1 |
+| [extruder-body.stl](Printed-Parts/stl/extruder-body.stl) | 1 |
 | extruder-cover.stl | 1 |
 | extruder-idler.stl | 1 |
 | fan_nozzle.stl | 1 |
