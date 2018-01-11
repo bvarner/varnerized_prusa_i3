@@ -55,12 +55,12 @@ Other branches are likely to be sandboxes for testing things. ;-)
     * Thankfully for the Z-axis I don't need an end-stop limit switch.
 * LCD -- Assuming my LCD fits the frame properly, I'll use the Prusa design...
 
-## Print Settings
+### Print Settings
 
 Prusa uses ABS, 20% infill, 3 perimeter shells. The rest, well that's up to you. :-)
 
 
-## BOM
+### BOM
 
 | Part | Quantity |
 | ---- | --------:| 
