@@ -45,7 +45,7 @@ Other branches are likely to be sandboxes for testing things. ;-)
     * Basing off the MK3 frame (which uses 3030 extrusions rather than threaded rods) translates more easily to wood.
     * I have a pretty well equipped wood shop, with 40 year old tools that are accurate +- 0.254mm and within a half-degree of cross-cut. I have calipers. I'll be able to correct for skew. :-)
 
-## Printed Parts
+## Printed Parts Lineage / Changes
 
 * Y-Axis (under heatbed carriage) -- Mostly from the MK3. The necessity of an endstop swtich necessitates some changes to the Y-Motor mount. I am expecting to need to modify the rear frame DXF to reflect modifications / changes. I may not have room for the limit switch microswitch. Also, the belt holder for y-frame may need modification.
 * X-Axis (gantry above heatbed) -- Completely from the MK2s.
@@ -53,9 +53,14 @@ Other branches are likely to be sandboxes for testing things. ;-)
 * Extruder -- Completely from the MK2s. I may look into the cogged dual-feed of the MK3 at some point, but until the Prusa fillament sensor board clones start to appear, there's really no reason to do that.
     * I will need to wait until my induction probe arrives to make sure it's the same physical size as the PINDA and avoid re-printing.
     * Thankfully for the Z-axis I don't need an end-stop limit switch.
-* LCD -- Assuming my LCD fits the frame properly, I'll use the Prusa design, but alter it slightly to debrand.
+* LCD -- Assuming my LCD fits the frame properly, I'll use the Prusa design...
 
-All Printed Parts and modifications are included in OpenSCAD + STL Form.
+## Print Settings
+
+Prusa uses ABS, 20% infill, 3 perimeter shells. The rest, well that's up to you. :-)
+
+
+## BOM
 
 | Part | Quantity |
 | ---- | --------:| 
