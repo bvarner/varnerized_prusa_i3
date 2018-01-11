@@ -22,7 +22,7 @@ The 'master' branch here will reflect the current (stable, functioning) state of
 The 'development' branch will track be the next iteration of updates / upgrades. 
 Other branches are likely to be sandboxes for testing things. ;-)
 
-## v1.0.0 - Initial Design
+# v1.0.0 - Initial Design
 
 * Heat-Bed - I chose a 3mm thick aluminum MK3 (Ultimaker clone).
     * This gives me a slightly smaller build area than an Original Prusa.
@@ -45,7 +45,7 @@ Other branches are likely to be sandboxes for testing things. ;-)
     * Basing off the MK3 frame (which uses 3030 extrusions rather than threaded rods) translates more easily to wood.
     * I have a pretty well equipped wood shop, with 40 year old tools that are accurate +- 0.254mm and within a half-degree of cross-cut. I have calipers. I'll be able to correct for skew. :-)
 
-### Printed Parts
+## Printed Parts
 
 * Y-Axis (under heatbed carriage) -- Mostly from the MK3. The necessity of an endstop swtich necessitates some changes to the Y-Motor mount. I am expecting to need to modify the rear frame DXF to reflect modifications / changes. I may not have room for the limit switch microswitch. Also, the belt holder for y-frame may need modification.
 * X-Axis (gantry above heatbed) -- Completely from the MK2s.
@@ -55,6 +55,25 @@ Other branches are likely to be sandboxes for testing things. ;-)
     * Thankfully for the Z-axis I don't need an end-stop limit switch.
 * LCD -- Assuming my LCD fits the frame properly, I'll use the Prusa design, but alter it slightly to debrand.
 
-All Printed Parts and modifications will be available in OpenSCAD + STL Form.
+All Printed Parts and modifications are included in OpenSCAD + STL Form.
+
+| Part | Quantity |
+| ---- | --------:| 
+| extruder-body.stl | 1 |
+| extruder-cover.stl | 1 |
+| extruder-idler.stl | 1 |
+| fan_nozzle.stl | 1 |
+| LCD-cover-Varnerized-MK3.stl | 1 |
+| lcd-supports.stl | 1 |
+| x-carriage.stl | 1 |
+| x-end-idler.stl | 1 |
+| x-end-motor.stl | 1 |
+| y-belt-holder.stl | 1 |
+| y-belt-idler.stl | 1 |
+| y-holder.stl | 4 |
+| y-motor-holder.stl | 1 |
+| z-axis-bottom.stl | 1 |
+| z-axis-top.stl | 1 |
+
 
 
