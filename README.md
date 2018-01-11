@@ -47,10 +47,10 @@ Other branches are likely to be sandboxes for testing things. ;-)
 
 ### Printed Parts
 
-* Y-Axis (under heatbed carriage) -- Mostly from the MK3. The necessity of an endstop swtich necessitates some changes to the Y-Motor mount.
-* X-Axis (gantry above heatbed) -- Mostly from the MK3. The necessity of an endstop switch necessitates some changes to the X-Motor mount.
-* Z-Axis -- Mostly from the MK3. The T8 leadscrew will extend beyond the upper limit of the MK3 frames upper z-ends. Using an MK2s part there might be easier than cutting the T8s.
-* Extruder -- Decidely MK2s. I may look into the cogged dual-feed of the MK3 at some point, but until the Prusa fillament sensor board clones start to appear, there's really no reason to do that.
+* Y-Axis (under heatbed carriage) -- Mostly from the MK3. The necessity of an endstop swtich necessitates some changes to the Y-Motor mount. I am expecting to need to modify the rear frame DXF to reflect modifications / changes. I may not have room for the limit switch microswitch. Also, the belt holder for y-frame may need modification.
+* X-Axis (gantry above heatbed) -- Completely from the MK2s.
+* Z-Axis -- Mostly from the MK3. The T8 leadscrew will likely extend beyond the upper limit of the MK3 frames upper z-ends. I modified the MK3 parts to 'open' the top of the leadscrew holes and the rod holding hole -- ala a MK2/s. I figure this will be easier than cutting a T8 rod.
+* Extruder -- Completely from the MK2s. I may look into the cogged dual-feed of the MK3 at some point, but until the Prusa fillament sensor board clones start to appear, there's really no reason to do that.
     * I will need to wait until my induction probe arrives to make sure it's the same physical size as the PINDA and avoid re-printing.
     * Thankfully for the Z-axis I don't need an end-stop limit switch.
 * LCD -- Assuming my LCD fits the frame properly, I'll use the Prusa design, but alter it slightly to debrand.
