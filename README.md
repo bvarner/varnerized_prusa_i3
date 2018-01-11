@@ -60,20 +60,20 @@ All Printed Parts and modifications are included in OpenSCAD + STL Form.
 | Part | Quantity |
 | ---- | --------:| 
 | [extruder-body.stl](Printed-Parts/stl/extruder-body.stl) | 1 |
-| extruder-cover.stl | 1 |
-| extruder-idler.stl | 1 |
-| fan_nozzle.stl | 1 |
-| LCD-cover-Varnerized-MK3.stl | 1 |
-| lcd-supports.stl | 1 |
-| x-carriage.stl | 1 |
-| x-end-idler.stl | 1 |
-| x-end-motor.stl | 1 |
-| y-belt-holder.stl | 1 |
-| y-belt-idler.stl | 1 |
-| y-holder.stl | 4 |
-| y-motor-holder.stl | 1 |
-| z-axis-bottom.stl | 1 |
-| z-axis-top.stl | 1 |
+| [extruder-cover.stl](Printed-Parts/stl/extruder-cover.stl) | 1 |
+| [extruder-idler.stl](Printed-Parts/stl/extruder-idler.stl) | 1 |
+| [fan_nozzle.stl](Printed-Parts/stl/fan_nozzle.stl) | 1 |
+| [LCD-cover-Varnerized-MK3.stl](Printed-Parts/stl/LCD-cover-Varnerized-MK3.stl) | 1 |
+| [lcd-supports.stl](Printed-Parts/stl/lcd-supports.stl) | 1 |
+| [x-carriage.stl](Printed-Parts/stl/x-carriage.stl) | 1 |
+| [x-end-idler.stl](Printed-Parts/stl/x-end-idler.stl) | 1 |
+| [x-end-motor.stl](Printed-Parts/stl/x-end-motor.stl) | 1 |
+| [y-belt-holder.stl](Printed-Parts/stl/y-belt-holder.stl) | 1 |
+| [y-belt-idler.stl](Printed-Parts/stl/y-belt-idler.stl) | 1 |
+| [y-holder.stl](Printed-Parts/stl/y-holder.stl) | 4 |
+| [y-motor-holder.stl](Printed-Parts/stl/y-motor-holder.stl) | 1 |
+| [z-axis-bottom.stl](Printed-Parts/stl/z-axis-bottom.stl) | 1 |
+| [z-axis-top.stl](Printed-Parts/stl/z-axis-top.stl) | 1 |
 
 
 
