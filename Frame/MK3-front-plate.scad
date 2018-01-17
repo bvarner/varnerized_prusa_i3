@@ -1,2 +1,2 @@
-linear_extrude(3)
+linear_extrude(6)
     import("MK3-front-plate.dxf", convexity = 10);

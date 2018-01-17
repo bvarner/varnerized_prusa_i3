@@ -17,7 +17,7 @@
 sector = 0;
 
 // Final thickness of the frame.
-thickness = 3;
+thickness = 6;
 
 /* -- About the .dxf --
     I started with the .dxf obtained from the original Prusa github repo.
