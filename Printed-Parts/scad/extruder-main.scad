@@ -5,6 +5,7 @@
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://prusamendel.org
 
+cable_tray_offset = 15;
 
 module extruder_body(){
 union(){
@@ -17,7 +18,7 @@ difference(){
             translate([-15.5,40,0])cube([21.5,5,14]);
             translate([9,41,-1]) rotate([0,0,45]) translate([0,-5,-0.1]) cube([10,12,20]);    
         }
-        translate([-7.5,15,0])cube([8,10.5,3]); // P.I.N.D.A. and Fan cable tray guide ; 
+        translate([-7.5,15 - cable_tray_offset,0])cube([8,10.5,3]); // P.I.N.D.A. and Fan cable tray guide ; 
         
         //fan nice look
         translate([35,0,0]) cube([10,12,15]);
@@ -29,7 +30,6 @@ difference(){
     translate([-28.5,40,5]) rotate([0,30,0]) translate([0,-5,-0.1]) cube([10,12,20]);   // Top
     translate([-33,40,-5]) rotate([0,60,0]) translate([0,-5,-0.1]) cube([12,12,20]); // Bottom
     
-    
     // P.I.N.D.A. probe mount hole
         translate([35/2,0,6]){
         translate([-23,35,0])rotate([-90,0,0])cylinder(r=14/2, h=8, $fn=6);
@@ -38,10 +38,10 @@ difference(){
      }
      
      // P.I.N.D.A. and Fan cable tray cut
-     translate([-4.5,20,-1]) cube([4.499,3.5+5,5]);
+     translate([-4.5,20 - cable_tray_offset,-1]) cube([4.499,3.5+5,5]);
      // P.I.N.D.A. and Fan cable tray edge cut
-     translate([-10,22,-1])rotate([0,0,45]) cube([10,5,10]);
-     translate([-13,16.5,-1])rotate([0,0,-45]) cube([10,5,10]);
+     translate([-10,22 - cable_tray_offset,-1])rotate([0,0,45]) cube([10,5,10]);
+     translate([-13,16.5 - cable_tray_offset,-1])rotate([0,0,-45]) cube([10,5,10]);
     
      extruder_nozzle_cut();  
      // larger groove for easy entry
