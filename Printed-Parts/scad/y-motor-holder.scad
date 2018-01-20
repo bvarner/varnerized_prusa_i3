@@ -11,11 +11,11 @@ module endstop_mount() {
             translate([-21+6,8,0]) cube([12-2, 5, 28]);    
             translate([-21,8-5,0]) cube([9, 10, 28]);
         }
-        translate([-16,16,15]) rotate([90,0,0]) cylinder(h = 10, r=0.8, $fn=20);
-        translate([-16,13.2,15]) rotate([90,0,0]) cylinder(h = 2, r1=1.2, r2=0.8, $fn=20);
+        translate([-16,16,11]) rotate([90,0,0]) cylinder(h = 10, r=0.8, $fn=20);
+        translate([-16,13.2,11]) rotate([90,0,0]) cylinder(h = 2, r1=1.2, r2=0.8, $fn=20);
 
-        translate([-16,16,24.5]) rotate([90,0,0]) cylinder(h = 10, r=0.8, $fn=20);
-        translate([-16,13.2,24.5]) rotate([90,0,0]) cylinder(h = 2, r1=1.2, r2=0.8, $fn=20);
+        translate([-16,16,17.5]) rotate([90,0,0]) cylinder(h = 10, r=0.8, $fn=20);
+        translate([-16,13.2,17.5]) rotate([90,0,0]) cylinder(h = 2, r1=1.2, r2=0.8, $fn=20);
         
         translate([-22,13.2,24.5]) rotate([90,0,0]) rotate([0, 0, 45]) cube([5, 4, 4]);
     }
