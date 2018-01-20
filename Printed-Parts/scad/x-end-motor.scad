@@ -25,13 +25,13 @@ module x_end_motor_endstop_base(){
 
 module x_end_motor_endstop_holes(){
     translate([-23.5,-28.5,58]){
-        translate([17/2,7.5,-3]){
+        translate([17/2,5,-3]){
             // Back screw hole for endstop
-            translate([-4.75,0,0])cylinder(r=1,h=19,$fn=20);
-            translate([-4.75,0,6])cylinder(r1=1, r2=1.5, h=2,$fn=20);
+            translate([-3.25,0,0]) cylinder(r=1,h=19,$fn=20);
+            translate([-3.25,0,6]) cylinder(r1=1, r2=1.5, h=2,$fn=20);
             // Front screw hole for endstop
-            translate([4.75,0,0])cylinder(r=1,h=19,$fn=20);
-            translate([4.75,0,6])cylinder(r1=1, r2=1.5, h=2,$fn=20);
+            translate([3.25,0,0]) cylinder(r=1,h=19,$fn=20);
+            translate([3.25,0,6]) cylinder(r1=1, r2=1.5, h=2,$fn=20);
             }
         }
 }
