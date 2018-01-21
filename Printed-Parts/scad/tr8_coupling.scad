@@ -44,6 +44,10 @@ module mount_holes() {
     rotate([0, 0, 180]) translate([-7, 0, (height / 4) * 3]) rotate([0, 90, 0]) cylinder(h = 0.75, r1 = 1.75, r2 = 1.25, $fn = 48);
 }
 
+// Translate and rotate things so that it's rendered the way we want it printed.
+translate([0, 0, height])
+rotate([180, 0, 0])
+
 if (test) {
     shaft();
     screw();
