@@ -3,8 +3,8 @@ cover_height = 70; // mm
 bottom_thickness = 2; //mm
 wall_thickness = 2.5; //mm
 
-vent_tab_bottom = 12; //mm measured bottom edge of PSU to vent hole;
-vent_tab_height = 2.75; //mm measured opening of the vents (Actual was 2.99, but I want some 'room').
+vent_tab_bottom = 13.5; //mm measured bottom edge of PSU to vent hole;
+vent_tab_height = 2; //mm measured opening of the vents (Actual was 2.99, but I want some 'room').
 vent_tab_width = 15; // mm Can be smaller than the width of the vent on the PSU.
 vent_cutout = 1; // 1 = yes, 0 = no.
 
@@ -19,8 +19,8 @@ psu_vent_from_bottom = 31; // mm measured from the bottom edge of the PSU.
 psu_mount_hole_from_bottom = 30; //mm measured from bottom edge of the PSU to bottom of the hole.
 
 // IEC Socket cutout
-iec_socket_width = 47; //mm
-iec_socket_height = 27.5; //mm
+iec_socket_width = 47.5; //mm
+iec_socket_height = 27.75; //mm
 
 iec_socket_lip = 1.6; // mm - The amount of 'overhang' on the front 'lip' of the IEC socket. Used to visually line up the IEC with the cutout for the ventilation.
 iec_socket_lip_wall_thickness = 1.5; //mm  wall-thickness required for socket to 'snap' into place.
@@ -42,13 +42,13 @@ module support_bracket() {
             translate([7,0,0])
             hull() {
                 translate([0, 6.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
-                translate([0, 8.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+                translate([0, 11.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
             }
             
             translate([26.75, 0, 0])
             hull() {
                 translate([0, 6.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
-                translate([0, 8.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+                translate([0, 11.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
             }
             translate([0, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 6.25]);
             translate([33, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 6.25]);
@@ -80,12 +80,12 @@ difference() {
             
             // IEC Cutout.
             color("green") {
-                translate([psu_width - psu_vent_from_edge - iec_socket_lip - iec_socket_width, 0, bottom_thickness + iec_socket_lip + 1.5])
+                translate([psu_width - psu_vent_from_edge - iec_socket_lip - iec_socket_width, 0, bottom_thickness + iec_socket_lip + 2.5])
                 cube([iec_socket_width, wall_thickness, iec_socket_height]);
                 // Ensure the wall thickness behind the IEC lip is only as thick as specified.
                 translate([psu_width - psu_vent_from_edge - (iec_socket_lip  * 2)- iec_socket_width, 
                                    iec_socket_lip_wall_thickness, 
-                                   bottom_thickness + 1.5])
+                                   bottom_thickness + 2.5])
                  cube([iec_socket_width + (iec_socket_lip * 2), wall_thickness, iec_socket_height + (iec_socket_lip * 2)]);
             }
         }
@@ -122,19 +122,19 @@ difference() {
 
     // Vertical Support rear mount holes & counter sink
     color("black") {
-        translate([(psu_width / 2) - 25 - 2, psu_depth + (wall_thickness * 2) + 3 - 1.5, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r2 = 3.5, r1 = 2, h = 1.5, $fn = 48);
-        translate([(psu_width / 2) - 25 - 2, psu_depth + wall_thickness - 1, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r = 2, h = wall_thickness + 5, $fn = 48);
+        translate([(psu_width / 2) - 25, psu_depth + (wall_thickness * 2) + 3 - 1.5, bottom_thickness + shelf_height + psu_mount_hole_from_bottom + 2]) rotate([-90, 0, 0]) cylinder(r2 = 3.5, r1 = 2, h = 1.5, $fn = 48);
+        translate([(psu_width / 2) - 25, psu_depth + wall_thickness - 1, bottom_thickness + shelf_height + psu_mount_hole_from_bottom + 2]) rotate([-90, 0, 0]) cylinder(r = 2, h = wall_thickness + 5, $fn = 48);
         
-        translate([(psu_width / 2) + 25 - 2, psu_depth + (wall_thickness * 2) + 3 - 1.5, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r2 = 3.5, r1 = 2, h = 1.5, $fn = 48);
-        translate([(psu_width / 2) + 25 - 2, psu_depth + wall_thickness - 1, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r = 2, h = wall_thickness + 5, $fn = 48);
+        translate([(psu_width / 2) + 25, psu_depth + (wall_thickness * 2) + 3 - 1.5, bottom_thickness + shelf_height + psu_mount_hole_from_bottom + 2]) rotate([-90, 0, 0]) cylinder(r2 = 3.5, r1 = 2, h = 1.5, $fn = 48);
+        translate([(psu_width / 2) + 25, psu_depth + wall_thickness - 1, bottom_thickness + shelf_height + psu_mount_hole_from_bottom + 2]) rotate([-90, 0, 0]) cylinder(r = 2, h = wall_thickness + 5, $fn = 48);
     }
     
     // Mount holes on the end away from the frame.
     // 25mm centers 11mm from the 'back' of the PSU.
-    translate([psu_width - 1, wall_thickness + psu_depth - 11, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
-    translate([psu_width - 1, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
-    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r1 = 2, r2 = 3.5, h = 1.5, $fn = 48);
-    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r = 2, r2 = 3.5, h = 1.5, $fn = 48);
+    translate([psu_width - 1, wall_thickness  + psu_depth - 11, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
+    translate([psu_width - 1, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
+    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r1 = 2, r2 = 3.5, h = 1.5, $fn = 48);
+    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r = 2, r2 = 3.5, h = 1.5, $fn = 48);
     
     translate([wall_thickness * 2+ 3, psu_depth + wall_thickness, bottom_thickness + 3])
     {
