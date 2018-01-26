@@ -5,6 +5,9 @@
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://prusamendel.org
 
+// Measured distance between my limit swtich mount and the carriage when the bearing "bottomed out" against the back.
+y_endstop_compensation = 18.5;
+
 module y_belt_holder()
 {
 
@@ -13,8 +16,11 @@ module y_belt_holder()
         // base block
         union()
         {
-            translate([-7,-24,44.5]) cube([14,48,8]);
+            translate([-7,-24 - y_endstop_compensation,44.5]) cube([14,48 + y_endstop_compensation,8]);
             translate([-5,-15,29]) cube([12,30,17]);
+            if (y_endstop_compensation > 0) {
+                translate([-5, -24 - y_endstop_compensation, 41]) cube([12, y_endstop_compensation, 4.5]);
+            }
         }
 
         // belt entry 
@@ -43,9 +49,9 @@ module y_belt_holder()
         translate([-8,-20,21.8]) rotate([45,0,0]) cube([16,10,10]);
         translate([-8,20,21.8]) rotate([45,0,0]) cube([16,10,10]);
 
-        translate([-8,-30,37]) rotate([45,0,0]) cube([16,10,10]);
-        translate([-8,30,37]) rotate([45,0,0]) cube([16,10,10]);
-        translate([-12.2,-30,44.4]) rotate([0,45,0]) cube([5,60,5]);
+        translate([-8,-30 - y_endstop_compensation,37]) rotate([45,0,0]) cube([16,10,10]);
+       translate([-8,30,37]) rotate([45,0,0]) cube([16,10,10]);
+        translate([-12.2,-30 - y_endstop_compensation,44.4]) rotate([0,45,0]) cube([5,60 + y_endstop_compensation,5]);
         
         // mounting screw holes
         translate([0,-19.50,40]) cylinder( h=30, r=1.65, $fn=30 );
@@ -70,7 +76,8 @@ module y_belt_holder()
 
 difference()
 {
-    translate([-40,0,7]) rotate([0,90,0]) y_belt_holder();
+    //translate([-40,0,7]) rotate([0,90,0]) 
+    y_belt_holder();
     //version   
     translate([8.5,3.5,0.5]) rotate([0,180,90]) linear_extrude(height = 0.6) 
     { text("R1",font = "helvetica:style=Bold", size=4, center=true); }
