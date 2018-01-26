@@ -1,153 +1,149 @@
-// PRUSA iteration3
-// PSU Cover
-// GNU GPL v3
-// Josef Průša <iam@josefprusa.cz> and contributors
-// http://www.reprap.org/wiki/Prusa_Mendel
-// http://prusamendel.org
+cover_height = 70; // mm
 
-module CubeAdjust(Xdim, Zdim){
-    for (x =[6:12.2:Xdim-12]){
-        for (z =[4.5:12:Zdim-12]){
+bottom_thickness = 2; //mm
+wall_thickness = 2.5; //mm
+
+vent_tab_bottom = 12; //mm measured bottom edge of PSU to vent hole;
+vent_tab_height = 2.75; //mm measured opening of the vents (Actual was 2.99, but I want some 'room').
+vent_tab_width = 15; // mm Can be smaller than the width of the vent on the PSU.
+vent_cutout = 1; // 1 = yes, 0 = no.
+
+//PSU dimensions
+psu_width = 114; //mm
+psu_depth = 50; //mm
+psu_height = 215; //mm
+psu_steel_thickness = 1.5; //mm measured thickness of the steel on the side by the frame.
+
+psu_vent_from_edge = 16.5; //mm mesured along the width - how far the PSU vent holes start from the edge of the PSU.
+psu_vent_from_bottom = 31; // mm measured from the bottom edge of the PSU.
+psu_mount_hole_from_bottom = 30; //mm measured from bottom edge of the PSU to bottom of the hole.
+
+// IEC Socket cutout
+iec_socket_width = 47; //mm
+iec_socket_height = 27.5; //mm
+
+iec_socket_lip = 1.6; // mm - The amount of 'overhang' on the front 'lip' of the IEC socket. Used to visually line up the IEC with the cutout for the ventilation.
+iec_socket_lip_wall_thickness = 1.5; //mm  wall-thickness required for socket to 'snap' into place.
+
+shelf_height = 27;
+
+// Support bracket.
+module support_bracket() {
+    color("purple") {
+        intersection() {
+            translate([14, 0, 6.25]) cube([5, 17, 20]); 
+            translate([14, 0, (19 / 2)+ 6.25]) rotate([180, 0, 0]) rotate([0, 90, 0]) cylinder(h = 6.25, r = 19, $fn = 3);
+        }
         
-        translate([x,-0.2,z])cube([10.3,0.4,10]);
+        difference() {
+            cube([33, 17, 6.25]);
+            
+            translate([7,0,0])
+            hull() {
+                translate([0, 6.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+                translate([0, 8.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+            }
+            
+            translate([26.75, 0, 0])
+            hull() {
+                translate([0, 6.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+                translate([0, 8.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+            }
+            translate([0, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 6.25]);
+            translate([33, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 6.25]);
         }
-        }
+    }
 }
 
-module PSU_COVER()
-{
-difference(){
-union(){
+difference() {
+    union() {
+        difference() {
+            // Main cubic area of the base.
+            color("blue")
+            cube([psu_width + wall_thickness, psu_depth + (wall_thickness * 2), cover_height]);
+            
+            // Create the main hollow for the PSU.
+            color("red")
+            translate([0, wall_thickness, bottom_thickness])
+            cube([psu_width, psu_depth, psu_height]);
+            
+            if (vent_cutout == 1) {
+                // Create the cutout for the PSU vents on the width.
+                color("red")
+                translate([psu_vent_from_edge, 0, bottom_thickness + shelf_height + psu_vent_from_bottom])
+                cube([psu_width - (psu_vent_from_edge * 2), wall_thickness, cover_height - (bottom_thickness + shelf_height + psu_vent_from_bottom)]);
+            }
+            
+            // IEC Cutout.
+            color("green") {
+                translate([psu_width - psu_vent_from_edge - iec_socket_lip - iec_socket_width, 0, bottom_thickness + iec_socket_lip + 1.5])
+                cube([iec_socket_width, wall_thickness, iec_socket_height]);
+                // Ensure the wall thickness behind the IEC lip is only as thick as specified.
+                translate([psu_width - psu_vent_from_edge - (iec_socket_lip  * 2)- iec_socket_width, 
+                                   iec_socket_lip_wall_thickness, 
+                                   bottom_thickness + 1.5])
+                 cube([iec_socket_width + (iec_socket_lip * 2), wall_thickness, iec_socket_height + (iec_socket_lip * 2)]);
+            }
+        }
+
+        // Add the wall beneath the PSU on the frame-side.
+        translate([0, wall_thickness, bottom_thickness]) 
+        cube([wall_thickness * 2, psu_depth, shelf_height]);
+
+        // Shelf on the Socket side.
+        translate([psu_width - (wall_thickness * 2), wall_thickness, bottom_thickness])
+        cube([wall_thickness * 2, psu_depth, shelf_height]);
+
+        // Add the partial wall and vent tab
+        color("orange") {
+        translate([psu_steel_thickness, wall_thickness, bottom_thickness + shelf_height])
+        cube([(wall_thickness * 2) - psu_steel_thickness, (psu_depth / 2) + (vent_tab_width / 2), vent_tab_bottom + (2 * vent_tab_height)]);
+        translate([0, wall_thickness + (psu_depth / 2) - (vent_tab_width / 2), bottom_thickness + shelf_height + vent_tab_bottom])
+        cube([psu_steel_thickness, vent_tab_width, vent_tab_height]);
+            
+        } 
+
+        // Vertical Support Columns (mount holes are typically 50mm on center, centered in the PSU, with radius 2)
+        color("black") {
+            // Supports are 15mm wide: 7.5's derive from that.
+            translate([(psu_width / 2) - 25 - 7.5, psu_depth + (wall_thickness * 2), 0])
+            cube([15, 3, cover_height]);
+            
+            translate([(psu_width / 2) + 25 - 7.5, psu_depth + (wall_thickness * 2), 0])
+            cube([15, 3, cover_height]);
+        }
+
+        translate([(psu_width / 2) + 25 - (33 / 2), psu_depth + (wall_thickness * 2), 0]) support_bracket();
+    }
+
+    // Vertical Support rear mount holes & counter sink
+    color("black") {
+        translate([(psu_width / 2) - 25 - 2, psu_depth + (wall_thickness * 2) + 3 - 1.5, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r2 = 3.5, r1 = 2, h = 1.5, $fn = 48);
+        translate([(psu_width / 2) - 25 - 2, psu_depth + wall_thickness - 1, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r = 2, h = wall_thickness + 5, $fn = 48);
+        
+        translate([(psu_width / 2) + 25 - 2, psu_depth + (wall_thickness * 2) + 3 - 1.5, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r2 = 3.5, r1 = 2, h = 1.5, $fn = 48);
+        translate([(psu_width / 2) + 25 - 2, psu_depth + wall_thickness - 1, bottom_thickness + shelf_height + psu_mount_hole_from_bottom]) rotate([-90, 0, 0]) cylinder(r = 2, h = wall_thickness + 5, $fn = 48);
+    }
     
-translate([0,0,-0.46])cube([116,50+15+5,54.25]); // Base
-
-translate([23.5,0,-3.5])cube([14-0.5,50+15+5,5]); // Back pillar 1
-
-translate([66-0.5+8,0,-3.5])cube([14,50+15+5,5]); // Back pillar 2
-
-translate([91+4,0,-0.46])cube([6,50+15,54.25]); // Base for bracket
-
-translate([-2, 41.4 ,19])cube([2,2.6,15]); // nipple on the right
-
-translate([-1.6,0,-0.5])cube([1.65,70,2.5]); // Frame skirt 1
-translate([-1.6,0,0])cube([1.65,29.4,53.78]); // Frame skirt 2
-translate([-1.6,0,51.32])cube([1.65,70,2.46]); // Frame skirt 3
-  
-}
-
-
-//pretty corners
-translate([-11,-2,-3.6])rotate([0,0,-45])cube([10,10,59]); // right bottom
-translate([95+21-5,-2,-2])rotate([0,0,-45])cube([10,10,58]); // left botton
-translate([-3,-9,-4.46])rotate([-45,0,0])cube([130,10,10]); // back bottom
-
-translate([-3,-12,54.9])rotate([-45,0,0])cube([130,10,10]); // bottom front edge
-translate([-3,45+15+5,-4.46])rotate([-45,0,0])cube([130,10,10]); // bottom edge
-translate([-3,48+15+5,54.78])rotate([-45,0,0])cube([130,10,10]); // top front edge
-
-translate([113-3,70+5,-2])rotate([0,0,-45])cube([10,10,58]); // top left edge
-
-translate([111,0-10,-20])rotate([0,-45,-45])cube([20,20,20]); // back left bottom corner
-translate([111,0-10,45])rotate([0,-45,-45])cube([20,20,20]); // front left bottom corner
-translate([111,60,-10])rotate([-35,-45,-45])cube([20,20,20]); // back left top corner
-translate([111,60,64])rotate([-55,48,-48])cube([20,20,20]); // front left top corner
-
-translate([79+13.5,-5,67.28])rotate([0,45,0])cube([20,90,20]); // front left line
-translate([79+13.5,-5,-13.96])rotate([0,45,0])cube([20,90,20]); // back left line
-translate([-7,-5,67.28])rotate([0,45,0])cube([20,90,20]); // froNt right line
-
-translate([3,2,2])cube([106.02,50.02+15+5,50.02-0.7]); // main cutout
-translate([-3,50-16.4+15,2])cube([100,16.5+5,50-0.7]); // insert cutout
-translate([-3,50-16.4-15.6+15,2])cube([10,100,17]); // right bottom cutout
-
-translate([101+2,50-16.4-17.6+15+0.9-2.5,2])cube([10,100,50-0.7]); // shelf top cutout
-translate([101+2,10,2])rotate([0,0,45]) cube([10*sqrt(2),10*sqrt(2),50-0.7]); // shelf angle cutout
-translate([101+2,2,2]) cube([10,18,50-0.7]); // shelf bottom cutout
-
-translate([-3,50-16.4-17.6+15+0.9-2.5,2])cube([100,100,10]); //  bottom cutout
-
-translate([20,60.5,50])cube([73,10,10]); // Vent cutout
-translate([20,67.5,50])rotate(45,0,0)cube([10,10,10]);
-translate([93,67,50])rotate(45,0,0)cube([10,10,10]);
-
-
-translate([5.5,0,0]){
-translate([40,5,50])cube([47.5,27.5,10]); // socket cutout
-translate([40,4,50])cube([15,29.5,2.8]);
-translate([72.5,4,50])cube([15,29.5,2.8]);
-}
-
-translate([7-0.5-0.5+18+6,43.5-1+15+0.5+4.5,-10])cylinder(r=2,h=50,$fn=15); //  right back mounthole cutout
-translate([7-0.5-0.5+18+6,43.5-1+15+0.+4.5,-3.7])cylinder(r2=2, r1=3.7,h=2,$fn=15);
-
-translate([67.5-0.7-0.5+8+6,43.5-1+15+0.5+4.5,-10])cylinder(r=2,h=50,$fn=15); //  left back mounthole cutout
-translate([67.5-0.7-0.5+8+6,43.5-1+15+0.5+4.5,-3.7])cylinder(r2=2, r1=3.7,h=3,$fn=15);
-
-
-translate([130+16,32+26+4.5,55-4-25+11.5])rotate([0,-90,0])cylinder(r=2,h=50,$fn=35); // Left side bracket screw hole L
-translate([117,32+26+4.5,55-4-25+11.5])rotate([0,-90,0])cylinder(r2=2, r1=4.1,h=3,$fn=15);
-
-translate([130+16,32+26+4.5,55-4-25-11.5])rotate([0,-90,0])cylinder(r=2,h=50,$fn=35); // Left side bracket screw hole R
-translate([117,32+26+4.5,55-4-25-11.5])rotate([0,-90,0])cylinder(r2=2, r1=4.1,h=3,$fn=15);
-
-translate([-2,0,-1])CubeAdjust(116,54.25); // bottom squares cutout
-
-// Left back power cutout.
-translate([10,6.5,-10])cylinder(r=3.5,h=50, $fn = 48);
-translate([20,6.5,-10])cylinder(r=3.5,h=50, $fn = 48);
-translate([10, 3, -10]) cube([10, 7, 50]); 
-}
-}
-
-module PSU_Y_REINFORCEMENT()
-{
-difference()
-{
-    union()     // base shape
-        {
-            translate([ 59.5, 0, -18 ]) cube([ 33, 6, 19 ]);  // reinforcement plate
-            translate([ 73.5, 5, -18 ]) cube([ 5, 16, 19 ]);  // vertical_reinforcement    
+    // Mount holes on the end away from the frame.
+    // 25mm centers 11mm from the 'back' of the PSU.
+    translate([psu_width - 1, wall_thickness + psu_depth - 11, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
+    translate([psu_width - 1, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
+    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r1 = 2, r2 = 3.5, h = 1.5, $fn = 48);
+    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30]) rotate([0, 90, 0]) cylinder(r = 2, r2 = 3.5, h = 1.5, $fn = 48);
+    
+    translate([wall_thickness * 2+ 3, psu_depth + wall_thickness, bottom_thickness + 3])
+    {
+        hull() {
+            translate([0, wall_thickness, 0]) rotate([90, 0, 0]) cylinder(r = 3, h = wall_thickness, $fn = 48);
+            translate([12, wall_thickness, 0]) rotate([90, 0, 0]) cylinder(r = 3, h = wall_thickness, $fn = 48);
         }
-    union ()    // cutouts
-        {
-            
-            
-            // corner cuts
-            translate([ 87.5, -8, -20 ]) rotate([ 0, 45, 0 ]) cube([ 10, 20, 10 ]);  //corner cut
-            translate([ 52.5, -8, -20 ]) rotate([ 0, 45, 0 ]) cube([ 10, 20, 10 ]);  //corner cut
-            
-            // angled vertical support
-            translate([ 68.5, 20, -34 ]) rotate([ 45, 0, 0 ]) cube([ 15, 23, 20 ]);  //vertical reinf cutout
-            
-            // bottom surface cuts
-            translate([ 66.2, -0.2, -5])cube([23.6, 0.4, 5.6]);
-            translate([ 68 + 1.8 +2.6, -0.2, -7.7 -5.6])cube([11.2, 0.4, 5.6]);
-            
-            
-            translate([ 88, 8, -11.5 ]) rotate([ 90, 0, 0]) cylinder( h = 10, r = 1.8, $fn=30 );  //hole A
-            translate([ 68, 8, -11.5 ]) rotate([ 90, 0, 0 ]) cylinder( h = 10, r = 1.8, $fn=30 );  //hole B
-            
-            translate([ 88, 8, -9.5 ]) rotate([ 90, 0, 0]) cylinder( h = 10, r = 1.8, $fn=30 );  //hole A
-            translate([ 68, 8, -9.5 ]) rotate([ 90, 0, 0 ]) cylinder( h = 10, r = 1.8, $fn=30 );  //hole B
-            
-            translate([ 86.2, -10, -11.5 ]) cube([ 3.6, 20, 2 ]);  // hole cut extension
-            translate([ 66.2, -10, -11.5 ]) cube([ 3.6, 20, 2 ]);  // hole cut extension
-            
-            
-            
-        }
-}
+    }
+    
+    // Pretty corner on the bottom & top.
+    translate([psu_width + wall_thickness - 1.5, 0, 0]) rotate([0, 45, 0]) cube([5, psu_depth + (wall_thickness * 2), 5]);
+    translate([psu_width + wall_thickness - 1.5, 0, cover_height]) rotate([0, 45, 0]) cube([5, psu_depth + (wall_thickness * 2), 5]);
+    translate([-3.5, 0, 0]) rotate([0, 45, 0]) cube([5, psu_depth + (wall_thickness * 2), 5]);
 }
 
-
-module FINAL_PART(){
-    union()
-        {
-            PSU_COVER();
-            PSU_Y_REINFORCEMENT();
-        }   
-}
-
-translate([2, 0, 0])
-    FINAL_PART();
 
