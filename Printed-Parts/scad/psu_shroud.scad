@@ -8,7 +8,7 @@ vent_tab_height = 2.75; //mm measured opening of the vents (Actual was 2.99, but
 vent_tab_width = 15; // mm Can be smaller than the width of the vent on the PSU.
 vent_cutout = 1; // 1 = yes, 0 = no.
 
-//PSU dimensions
+// PSU dimensions
 psu_width = 114; //mm
 psu_depth = 50; //mm
 psu_height = 215; //mm
@@ -25,6 +25,7 @@ iec_socket_height = 27.5; //mm
 iec_socket_lip = 1.6; // mm - The amount of 'overhang' on the front 'lip' of the IEC socket. Used to visually line up the IEC with the cutout for the ventilation.
 iec_socket_lip_wall_thickness = 1.5; //mm  wall-thickness required for socket to 'snap' into place.
 
+// How high up the "shelf" that the PSU sits on is from the bottom of the shroud.
 shelf_height = 27;
 
 // Support bracket.
@@ -72,6 +73,9 @@ difference() {
                 color("red")
                 translate([psu_vent_from_edge, 0, bottom_thickness + shelf_height + psu_vent_from_bottom])
                 cube([psu_width - (psu_vent_from_edge * 2), wall_thickness, cover_height - (bottom_thickness + shelf_height + psu_vent_from_bottom)]);
+                
+                translate([psu_vent_from_edge - 1.5, 0, cover_height]) rotate([0, 45, 0]) cube([5, wall_thickness, 5]);
+                translate([psu_width - psu_vent_from_edge - 5.5, 0, cover_height]) rotate([0, 45, 0]) cube([5, wall_thickness, 5]);
             }
             
             // IEC Cutout.
@@ -144,6 +148,9 @@ difference() {
     translate([psu_width + wall_thickness - 1.5, 0, 0]) rotate([0, 45, 0]) cube([5, psu_depth + (wall_thickness * 2), 5]);
     translate([psu_width + wall_thickness - 1.5, 0, cover_height]) rotate([0, 45, 0]) cube([5, psu_depth + (wall_thickness * 2), 5]);
     translate([-3.5, 0, 0]) rotate([0, 45, 0]) cube([5, psu_depth + (wall_thickness * 2), 5]);
+    // Pretty corner for the back top.
+    translate([0, psu_depth + (2 * wall_thickness) + 3, cover_height - 4.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 7]);
+    translate([0, 0, cover_height - 1.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 5]);
 }
 
 
