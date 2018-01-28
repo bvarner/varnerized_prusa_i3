@@ -49,8 +49,13 @@ module y_belt_holder()
         translate([-8,-20,21.8]) rotate([45,0,0]) cube([16,10,10]);
         translate([-8,20,21.8]) rotate([45,0,0]) cube([16,10,10]);
 
-        translate([-8,-30 - y_endstop_compensation,37]) rotate([45,0,0]) cube([16,10,10]);
-       translate([-8,30,37]) rotate([45,0,0]) cube([16,10,10]);
+        if (y_endstop_compensation > 0) {
+            translate([-8,-30 - y_endstop_compensation,34]) rotate([45,0,0]) cube([16,10,10]);
+            translate([-8,-30 - y_endstop_compensation,37]) rotate([45,0,0]) cube([3,10,10]);
+        } else {
+            translate([-8,-30 - y_endstop_compensation,37]) rotate([45,0,0]) cube([16,10,10]);
+        }
+        translate([-8,30,37]) rotate([45,0,0]) cube([16,10,10]);
         translate([-12.2,-30 - y_endstop_compensation,44.4]) rotate([0,45,0]) cube([5,60 + y_endstop_compensation,5]);
         
         // mounting screw holes
@@ -68,7 +73,11 @@ module y_belt_holder()
         translate([0,-19.0,43.5]) cylinder( h=7, r=3.1, $fn=30 );
         translate([0,19.0,43.5]) cylinder( h=7, r=3.1, $fn=30 );
         
-    
+        // If there's an endstop switch, we need to make sure we have clearance for the motor mount but contact with the switch, since we can't 'stall' against it.
+        // Also, this is with a break-away tab, so that we can print with bridging, and it'll work without support.
+        if (y_endstop_compensation > 0) {
+            translate([4.5, -24 - y_endstop_compensation + .5, 40]) cube([3, 7, 20]);
+        }
     }
  
 
