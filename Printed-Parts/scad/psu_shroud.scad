@@ -71,8 +71,10 @@ difference() {
             if (vent_cutout == 1) {
                 // Create the cutout for the PSU vents on the width.
                 color("red")
-                translate([psu_vent_from_edge, 0, bottom_thickness + shelf_height + psu_vent_from_bottom])
-                cube([psu_width - (psu_vent_from_edge * 2), wall_thickness, cover_height - (bottom_thickness + shelf_height + psu_vent_from_bottom)]);
+                translate([psu_vent_from_edge, 0, bottom_thickness + shelf_height + psu_vent_from_bottom]) cube([psu_width - (psu_vent_from_edge * 2), wall_thickness, cover_height - (bottom_thickness + shelf_height + psu_vent_from_bottom)]);
+                
+                // pretty corners
+                translate([psu_vent_from_edge, 0, bottom_thickness + shelf_height + psu_vent_from_bottom - (wall_thickness / 2)]) rotate([45, 0, 0])cube([psu_width - (psu_vent_from_edge * 2), wall_thickness * 2, wall_thickness * 2]);
                 
                 translate([psu_vent_from_edge - 1.5, 0, cover_height]) rotate([0, 45, 0]) cube([5, wall_thickness, 5]);
                 translate([psu_width - psu_vent_from_edge - 5.5, 0, cover_height]) rotate([0, 45, 0]) cube([5, wall_thickness, 5]);
@@ -151,6 +153,12 @@ difference() {
     // Pretty corner for the back top.
     translate([0, psu_depth + (2 * wall_thickness) + 3, cover_height - 4.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 7]);
     translate([0, 0, cover_height - 1.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 5]);
+    
+    translate([16,0.25,40]) rotate([90,0,0]) linear_extrude(height = 0.25) 
+    { text("Varnerized",font = "helvetica:style=Bold", size=12, center=true); }
+    
+    translate([16, 0.25, 8]) rotate([90, 0, 0]) linear_extrude(height = 0.25)
+    {text("i3", font = "helvetica:style=Bold", size = 24, center = true);}
 }
 
 
