@@ -5,7 +5,7 @@
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://prusamendel.org
 
-cable_tray_offset = 15;
+cable_tray_offset = 0;
 
 module extruder_body(){
 union(){
