@@ -5,7 +5,8 @@
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://prusamendel.org
 
-
+// Added a 'cutout' for the contrast POT on the cheap-o RAMPS boards.
+pot_cutout = 1;
 
 
 module body()
@@ -87,14 +88,20 @@ module support()
 
 module left_lcd_support()
 {
-    support();
-     
-    rotate([0,0,45]) difference()
-    {
-        // sd card shield
-        translate([-3,3,10])  cube([2,55,10]); 
-        translate([-4,3,20]) rotate([0,90,0]) cylinder( h=4, r=7, $fn=30); 
-        translate([-4,58,20]) rotate([0,90,0]) cylinder( h=4, r=7, $fn=30); 
+    difference() {
+        union() {
+            support();
+            rotate([0,0,45]) difference()
+            {
+                // sd card shield
+                translate([-3,3,10])  cube([2,55,10]); 
+                translate([-4,3,20]) rotate([0,90,0]) cylinder( h=4, r=7, $fn=30); 
+                translate([-4,58,20]) rotate([0,90,0]) cylinder( h=4, r=7, $fn=30); 
+            }
+        }
+        if (pot_cutout == 1) {
+            rotate([0, 0, 45]) translate([-4, 40, 14]) rotate([0, 90, 0]) cube([14, 12, 10]);
+        }
     }
 }
 
