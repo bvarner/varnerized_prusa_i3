@@ -11,15 +11,15 @@ difference() {
     translate([17, -2.5, 0]) rotate([0, -25, 0]) cube([5, 5, 20]);
     
     intersection() {
-        translate([-5.2, 0, 0]) cube([10.4, 10, 4]);
-        cylinder(r = 5.2, h = 4);
+        translate([-5.5, 0, 0]) cube([11, 10, 4]);
+        cylinder(r = 5.5, h = 4);
     }
-    translate([-5.2, -1.25, 0]) cube([10.4, 1.25, 4]);
-    cylinder(r = 2.5, h = 4);
+    translate([-5.5, -1.25, 0]) cube([11, 1.25, 4]);
+    cylinder(r = 3, h = 4);
 }
 
 difference() {
-    cylinder(r = 5, h = 3.8);
-    cylinder(r = 2.5, h = 4);
+    cylinder(r = 4.5, h = 3.8);
+    cylinder(r = 3, h = 4);
     translate([-.75, 0, 0])cube([1.5, 5, 3.8]);
 }

@@ -154,11 +154,11 @@ difference() {
     translate([0, psu_depth + (2 * wall_thickness) + 3, cover_height - 4.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 7]);
     translate([0, 0, cover_height - 1.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 5]);
     
-    translate([16,0.25,40]) rotate([90,0,0]) linear_extrude(height = 0.25) 
-    { text("Varnerized",font = "helvetica:style=Bold", size=12, center=true); }
+    translate([16,0.25,40]) rotate([90,0,0]) linear_extrude(height = 0.4) 
+    { text("Varnerized",font = "helvetica:style=Bold", size=12, center=true, $fn = 360); }
     
-    translate([16, 0.25, 8]) rotate([90, 0, 0]) linear_extrude(height = 0.25)
-    {text("i3", font = "helvetica:style=Bold", size = 24, center = true);}
+    translate([16, 0.25, 8]) rotate([90, 0, 0]) linear_extrude(height = 0.4)
+    {text("i3", font = "helvetica:style=Bold", size = 24, center = true, $fn = 360);}
 }
 
 
