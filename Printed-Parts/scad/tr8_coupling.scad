@@ -45,11 +45,11 @@ module coupler_body() {
 }
 
 module mount_holes() {
-    translate([-8, 0, height / 4]) rotate([0, 90, 0]) metric_thread(diameter=2.5, pitch = 0.45, length = 16);
+    translate([-8, 0, height / 4]) rotate([0, 90, 0]) metric_thread(diameter=3, pitch = 0.5, length = 16);
     translate([-7, 0, height / 4]) rotate([0, 90, 0]) cylinder(h = 0.75, r1 = 1.75, r2 = 1.2, $fn = 48);
     rotate([0, 0, 180]) translate([-7, 0, height / 4]) rotate([0, 90, 0]) cylinder(h = 0.75, r1 = 1.75, r2 = 1.2, $fn = 48);
     
-    translate([-8, 0, (height / 4) * 3]) rotate([0, 90, 0]) metric_thread(diameter=2.5, pitch = 0.45, length = 16);
+    translate([-8, 0, (height / 4) * 3]) rotate([0, 90, 0]) metric_thread(diameter=3, pitch = 0.5, length = 16);
     translate([-7, 0, (height / 4) * 3]) rotate([0, 90, 0]) cylinder(h = 0.75, r1 = 1.75, r2 = 1.2, $fn = 48);
     rotate([0, 0, 180]) translate([-7, 0, (height / 4) * 3]) rotate([0, 90, 0]) cylinder(h = 0.75, r1 = 1.75, r2 = 1.2, $fn = 48);
 }
