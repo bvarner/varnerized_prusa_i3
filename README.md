@@ -20,16 +20,16 @@ This isn't just an attempt to build a clone and leave it alone. In keeping with 
 
 The 'master' branch here will reflect the current (stable, functioning) state of the project, if there is one, as is.
 The 'development' branch will track be the next iteration of updates / upgrades. 
-Other branches are likely to be sandboxes for testing things. ;-)
+I'll be using the 'gitflow' strategy to track minor revisions to existing machine designs.
 
-# 0.1.0 - Hybrid MK2s & MK3
+# 1.0.0 - Hybrid MK2s & MK3
 
-* Heat-Bed - I chose a 3mm thick aluminum MK3 (Ultimaker clone).
+* Heat-Bed - I chose a 3mm thick aluminum MK3 (Ultimaker clone) 200x200mm.
     * This gives me a slightly smaller build area than an Original Prusa.
-    * No 'fully-automatic' mesh leveling and skew compensation.
+    * No 'fully-automatic' skew compensation.
         * The aluminum bed of the MK3 will still work for automatic z-layer leveling.
         * Guided x-y skew measurement and compensation will be required.
-    * I did pony up for a sheet of PEI plastic to cover the aluminum bed and improve adhesion.
+    * I did pony up for a sheet of PEI plastic to cover the aluminum bed and improve adhesion. That was worth it.
 * Steppers - I used an inexpensive 5-pack of 5mm output shaft steppers that put out ~40n-cm of torque.
     * My Z-Axis motors require flex-couplings to the lead screws.
     * I did pony up for T8 ACME lead screws and nuts for the Z-axis. The small cost should be worth the improved ridgidity and accuracy.
@@ -57,10 +57,13 @@ Other branches are likely to be sandboxes for testing things. ;-)
 
 ### Print Settings
 
-Prusa uses ABS, 20% infill, 3 perimeter shells. The rest, well that's up to you. :-)
+Prusa uses ABS, 20% infill, 3 perimeter (vertical) shells on a 0.4mm nozzle. The rest, well that's up to you. :-)
+The three vertical shells are incredibly important. The extra ridigity / support is _really_ necessary, or you're likely to break idler parts.
 
 
 ### BOM
+
+The basic BOM is:
 
 | Part | Quantity |
 | ---- | --------:| 
@@ -70,6 +73,7 @@ Prusa uses ABS, 20% infill, 3 perimeter shells. The rest, well that's up to you.
 | [fan_nozzle.stl](Printed-Parts/stl/fan_nozzle.stl) | 1 |
 | [LCD-cover-Varnerized-MK3.stl](Printed-Parts/stl/LCD-cover-Varnerized-MK3.stl) | 1 |
 | [lcd-supports.stl](Printed-Parts/stl/lcd-supports.stl) | 1 |
+| [lcd-knob.stl](Printed-Parts/stl/lcd-knob.stl) | 1 |
 | [x-carriage.stl](Printed-Parts/stl/x-carriage.stl) | 1 |
 | [x-end-idler.stl](Printed-Parts/stl/x-end-idler.stl) | 1 |
 | [x-end-motor.stl](Printed-Parts/stl/x-end-motor.stl) | 1 |
@@ -80,5 +84,5 @@ Prusa uses ABS, 20% infill, 3 perimeter shells. The rest, well that's up to you.
 | [z-axis-bottom.stl](Printed-Parts/stl/z-axis-bottom.stl) | 1 |
 | [z-axis-top.stl](Printed-Parts/stl/z-axis-top.stl) | 1 |
 
-
+Optionally, I highly recommend you print the spool holder, RAMPS (Rambo) case, psu shroud, etc. or: model your own.
 
