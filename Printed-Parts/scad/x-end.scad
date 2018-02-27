@@ -19,7 +19,7 @@ translate(v=[-15,-9,height/2]) cube(size = [17,39,height], center = true);
  // Cylinder
    translate(v=[0,-17,0]) poly_cylinder(h = 10.5, r=12.5, $fn=25);
  // Hexagon
- //translate(v=[0,-17,0]) rotate([0,0,30]) cylinder(h = 8, r=8, $fn = 6);
+//translate(v=[0,-17,0]) rotate([0,0,30]) cylinder(h = 8, r=8, $fn = 6);
 translate(v=[-6,-10.6,10]) rotate([0,0,48.2]) cube(size = [10,5,1], center = true);
     
   rotate([90,0,-15,]) translate ([-1, 8, 24])linear_extrude(height = 4) polygon( points=[[0,0],[0,12],[8,0]] ); //vzpera lozisek
@@ -71,6 +71,7 @@ translate(v=[-15,-41.5,rod_distance+6]) rotate(a=[-90,0,0]) pushfit_rod(7.8,50);
 
 // Nut traps for TR nut screws
     translate(v=[0,-17, 0]) rotate([0, 0, -135]) translate([0, 8, 6]) rotate([0, 0, 0])cylinder(h = 3, r = 3.45, $fn=6);
+    translate(v=[0,-17, 0]) rotate([0, 0, -135]) translate([3.5, 8, 6]) rotate([0, 0, 180]) cube([7, 6, 3]);
 
     translate(v=[0,-17, 0]) rotate([0, 0, -135]) translate([0, -8, 6]) rotate([0, 0, 30])cylinder(h = 3, r = 3.2, $fn=6);
     translate([-5.5,-17.2,6]) rotate([0,0,30]) cube([5,5,3]);
