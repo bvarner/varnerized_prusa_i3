@@ -31,7 +31,7 @@ I'll be using the 'gitflow' strategy to track minor revisions to existing machin
         * Guided x-y skew measurement and compensation will be required.
     * I did pony up for a sheet of PEI plastic to cover the aluminum bed and improve adhesion. That was worth it.
 * Steppers - I used an inexpensive 5-pack of 5mm output shaft steppers that put out ~40n-cm of torque.
-    * My Z-Axis motors require flex-couplings to the lead screws.
+    * My Z-Axis motors require couplings to the lead screws.
     * I did pony up for T8 ACME lead screws and nuts for the Z-axis. The small cost should be worth the improved ridgidity and accuracy.
 * Electronics - Arduino Mega 2650 + RAMPS 1.4a
     * Won't be nearly as nicely packaged as a mini-rambo... until I print my own case design to make it not ugly.
@@ -59,7 +59,6 @@ I'll be using the 'gitflow' strategy to track minor revisions to existing machin
 
 Prusa uses ABS, 20% infill, 3 perimeter (vertical) shells on a 0.4mm nozzle. The rest, well that's up to you. :-)
 The three vertical shells are incredibly important. The extra ridigity / support is _really_ necessary, or you're likely to break idler parts.
-
 
 ### BOM
 
