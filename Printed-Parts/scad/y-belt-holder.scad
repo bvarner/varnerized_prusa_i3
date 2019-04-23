@@ -76,19 +76,24 @@ module y_belt_holder()
         // If there's an endstop switch, we need to make sure we have clearance for the motor mount but contact with the switch, since we can't 'stall' against it.
         // Also, this is with a break-away tab, so that we can print with bridging, and it'll work without support.
         if (y_endstop_compensation > 0) {
-            translate([4.5, -24 - y_endstop_compensation + .5, 40]) cube([3, 7, 20]);
+            translate([4.5, -24 - y_endstop_compensation, 40]) {
+                // 3 segments with 0.4 mm dividers and an initial 0.4mm offset
+                segment = (y_endstop_compensation - (0.4 * 3)) / 3;
+                for (f = [0.4 : segment + 0.4 : y_endstop_compensation]) {
+                    translate([0, f, 0]) 
+                        cube([3, segment, 20]);
+                }
+            }
         }
     }
- 
-
 }
 
 difference()
 {
-    //translate([-40,0,7]) rotate([0,90,0]) 
+    translate([-40,0,7]) rotate([0,90,0]) 
     y_belt_holder();
     //version   
     translate([8.5,3.5,0.5]) rotate([0,180,90]) linear_extrude(height = 0.6) 
-    { text("R1",font = "helvetica:style=Bold", size=4, center=true); }
+    { text("R1.5",font = "helvetica:style=Bold", size=4, center=true); }
 }
     
