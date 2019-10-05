@@ -16,7 +16,7 @@ mount_hole_od = 3;
 
 // If an upper opening is needed, this will carve open the top.
 upper_opening_increase = 0;
-strap_width = 7.5;
+strap_width = 10;
 strap_hole_diameter = 2.5;
 strap_wiggle = 5;
 strap_wiggle_flat = 1.5;

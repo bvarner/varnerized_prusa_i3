@@ -104,13 +104,13 @@ difference()
     // Fan mount Pegs.
     difference() {
         translate( [99.5 - 4.5, 82 - 4.25, 1] ) cylinder( h = 7.8, r = 2, $fn = 30);
-        translate( [99.5 - 4.5, 82 - 4.25, 2.8] ) cylinder( h = 6.2, r = 1.5, $fn = 30);
-        translate( [99.5 - 4.5, 82 - 4.25, 8] ) cylinder( h = 1, r1 = 1.5, r2 = 1.85, $fn = 30);
+        translate( [99.5 - 4.5, 82 - 4.25, 2.8] ) cylinder( h = 6.2, d = 2.5, $fn = 30);
+        translate( [99.5 - 4.5, 82 - 4.25, 8] ) cylinder( h = 1, d1 = 2.5, d2 = 3, $fn = 30);
     }
     difference() {
         translate( [99.5 - 4.5 - 71.5, 82 - 4.25, 1] ) cylinder( h = 7.8, r = 2, $fn = 30);
-        translate( [99.5 - 4.5 - 71.5, 82 - 4.25, 2.8] ) cylinder( h = 6.2, r = 1.5, $fn = 30);
-        translate( [99.5 - 4.5 - 71.5,, 82 - 4.25, 8] ) cylinder( h = 1, r1 = 1.5, r2 = 1.85, $fn = 30);
+        translate( [99.5 - 4.5 - 71.5, 82 - 4.25, 2.8] ) cylinder( h = 6.2, d = 2.5, $fn = 30);
+        translate( [99.5 - 4.5 - 71.5,, 82 - 4.25, 8] ) cylinder( h = 1, d1 = 2.5, d2 = 3, $fn = 30);
     }
 }
  

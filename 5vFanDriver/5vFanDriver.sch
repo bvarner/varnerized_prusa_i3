@@ -70,7 +70,7 @@ U 1 1 5CBB7A65
 P 4350 1700
 F 0 "J2" H 4323 1580 50  0000 R CNN
 F 1 "Conn_01x04_Male" H 4323 1671 50  0000 R CNN
-F 2 "Connector_PinHeader_2.00mm:PinHeader_1x04_P2.00mm_Vertical" H 4350 1700 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 4350 1700 50  0001 C CNN
 F 3 "~" H 4350 1700 50  0001 C CNN
 	1    4350 1700
 	-1   0    0    1   

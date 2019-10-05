@@ -14,7 +14,7 @@ ramps_offset_y=15;
 ramps_offset_x=19.7;
 
 extruder_cable_offset=50; // extruder cable holder offset
-heatbed_cable_offset=-40; // heatbed x offset
+heatbed_cable_offset=-30; // heatbed x offset
 
 // Case extension.
 
@@ -75,9 +75,6 @@ difference()
     
     //lower
     translate( [ 98 , 0 , 0 ] ) cube( [ 20.5 , 4 , 10 ] ); 
-
-    // heatbed filament holder body
-    translate( [ 81.6+heatbed_cable_offset, 90.35 , 24 ] ) rotate([0,90,0]) cylinder( h = 18, r = 5, $fn=6); 
 
     // door closing corner
     translate( [ 102 , 88.5 , 35 ] ) cylinder( h = 3, r1=2.5, r2=1, $fn=30);   
@@ -148,17 +145,11 @@ module cutouts(){
     translate( [ 75.5+heatbed_cable_offset , 94 , 24 ] ) rotate([90,90,0]) cylinder( h = 5, r = 7, $fn=6); 
     translate( [ 71+heatbed_cable_offset , 80 , 13.5 ] ) cube( [ 8 , 15 , 5] ); 
     }
-    translate( [ 73+heatbed_cable_offset , 80 , 20.5 ] ) cube( [ 5 , 15 , 15] ); 
+    translate( [ 71.5+heatbed_cable_offset , 80 , 20.5 ] ) cube( [ 8 , 15 , 15] ); 
 
     // heatbed cable ziptie holes
     translate( [ 64+heatbed_cable_offset , 87 , 30 ] ) cube( [ 4 , 10 , 2 ] );   
     translate( [ 64+heatbed_cable_offset , 87 , 16 ] ) cube( [ 4 , 10 , 2 ] );   
-
-
-    // heatbed filament holder hole
-    translate( [ 81+heatbed_cable_offset , 89 , 24 ] ) rotate([0,90,0]) cylinder( h = 15, r = 1.8, $fn=30);   
-    translate( [ 81+heatbed_cable_offset , 89 , 24 ] ) rotate([0,90,0]) cylinder( h = 2, r = 2, r2=1.8, $fn=30);   
-    translate( [ 70+heatbed_cable_offset , 92 , 15 ] ) cube( [ 30 , 10 , 15] ); 
 
     // Reset hole
     translate( [ 81, 87, 25.5 ] ) rotate([-90,0,0]) cylinder( h = 10, r = 2, $fn=30); 
