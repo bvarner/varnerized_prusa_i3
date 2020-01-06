@@ -1,17 +1,17 @@
 # Varnerized Prusa i3 3D Printer Clone
 
-This is a project to produce a 3d printer based upon the (very excellent) work of Mr. Prusa. I'm a huge fan.
+This is a project to produce a 3d printer based upon the (very excellent) work of Mr. Josef Prusa. I'm a huge fan.
 
 I recently got some hands-on time with a Prusa i3 MK2 (the office got one).
-After playing with the Prusa at work, I found some guides online for building your own, inspired by their design.
+After playing with the machine at work, I found some guides online for building your own inspired by their design.
 Specifically, [Tom's Dolly Build](https://toms3d.org/2017/02/23/building-cheapest-possible-prusa-i3-mk2/) was highly inspiring.
 
-I'm willing to sacrifice _some_ asthetics, a bit of performance, and the 'ease' of pre-integration for the sake of cost cutting.
+I'm willing to sacrifice _some_ asthetics, a bit of performance, the 'ease' of pre-integration, and get an education for the sake of cost cutting.
 As in the early heady days of the PC industry... building a 'clone' from imported components is cheaper than purchasing the fully assembled and configured machine.
 
 ## Goal of the project.
 
-To clone a Prusa i3 with very similar mechanics, using import parts and more-modular electronics.
+To clone a Prusa i3 with very similar mechanics, using import parts and cheaper, more-modular electronics.
 My initial budget for the build is $225.
 
 This isn't just an attempt to build a clone and leave it alone. In keeping with the RepRap / Prusa mentality, my desire is to build a device that allows for replicating / designing / implementing more advanced subsequent generations.
@@ -21,6 +21,13 @@ This isn't just an attempt to build a clone and leave it alone. In keeping with 
 The 'master' branch here will reflect the current (stable, functioning) state of the project, if there is one, as is.
 The 'development' branch will track be the next iteration of updates / upgrades. 
 I'll be using the 'gitflow' strategy to track minor revisions to existing machine designs.
+
+# 1.1.0 - More MK3 less, MK2.
+* Heat-Bed - I replaced my aluminum MK3 heat bed with a magnetic MK52, 12V heat bed.
+    * It's not as 'flat' as the prusa originals.
+    * Cost was ~$36, as opposed to the original one which was ~$8.
+    * Spring steel sheet + PEI cost around another $25. At this time, I'd opt for the powder-coated textured spring steel instead.
+* 
 
 # 1.0.0 - Hybrid MK2s & MK3
 
