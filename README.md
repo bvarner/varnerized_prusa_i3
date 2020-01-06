@@ -22,14 +22,44 @@ The 'master' branch here will reflect the current (stable, functioning) state of
 The 'development' branch will track be the next iteration of updates / upgrades. 
 I'll be using the 'gitflow' strategy to track minor revisions to existing machine designs.
 
+# 1.1.1 - Lack Table Enclosure.
+Following the [prusaprinters blog post](https://blog.prusaprinters.org/cheap-simple-3d-printer-enclosure/) on building an inexpensive (hah!) enclosure for your printer I recently picked up a couple of IKEA LACK tables.
+After getting local quotes for producing the 440x440 and 440x220 acrylic panels, I opted to buy a set from a vendor on Amazon who could beat the locally sourced prices.
+
+* Printed Parts
+    * PSU Shroud
+        * Compatible with the Prusa Lack table mounting clip (mounting foot geometry is closer to the Prusa part)
+        * Added Lack Table PSU retainer. Similar Style as the Prusa version.
+        * Text rotates to the upside down orientation on the PSU Shroud if you're rendering the LACK table parts.
+
 # 1.1.0 - More MK3 less, MK2.
-* Heat-Bed - I replaced my aluminum MK3 heat bed with a magnetic MK52, 12V heat bed.
+Total upgrade cost was ~$75 in January 2018.
+
+* Heat-Bed
+    * I replaced my aluminum MK3 heat bed with a magnetic MK52, 12V heat bed.
     * It's not as 'flat' as the prusa originals.
     * Cost was ~$36, as opposed to the original one which was ~$8.
     * Spring steel sheet + PEI cost around another $25. At this time, I'd opt for the powder-coated textured spring steel instead.
-* 
+* Extruder
+    * Uses the BondTech style extruder pulleys
+    * Improved part cooling
+    * 5v Noctua Fan reduces ambient noise considerably
+    * I did not add a filament sensor (yet) or a dust-buffer (yet).
+* Electronics
+    * After having beefed up the ampacity of the RAMPS 1.4a board, and replacing the heatbed mosfet, I decided to try a RAMPS 1.6 board.
+    * Much better experience than the RAMPS 1.4a.
+    * After 11 months of use, no over-heating issues. No fried mosfets, no fire risk. Much better electronics from that stand point.
+    * Heat bed does heat slowly, a consequence of the mosfet choice on this board, from what I understand.
+    * I've updated my firmware to Marlin 1.1.9, and "Varnerized" it to match the Prusa Home Screen Asthetic on the LCD.
+    * Updated RAMBo cover a bit. I ended up reprinting in PETG and got much better results than with the original PLA. It also hasn't sagged and melted in my hot-box.
+* Mechanics
+    * Y-Axis bearing holders have been redone, and are now my own design that allows for slight play.
+    * I think I've fixed the issues with the y-axis belt holder not contacting the limit switch properly.
+    * Updates to the TR8_couplings have resulted in much better Z-axis stability.
+    * heatbed cable cover -- based on using ring terminals and heavy gauge speaker wire -- is _very_ large compared to the MK3.
 
 # 1.0.0 - Hybrid MK2s & MK3
+The original starting point. 1 Spool of ABS, a few scraps of cabinet grade plywood, access to a working MK2, and about $165 in imported parts.
 
 * Heat-Bed - I chose a 3mm thick aluminum MK3 (Ultimaker clone) 200x200mm.
     * This gives me a slightly smaller build area than an Original Prusa.
