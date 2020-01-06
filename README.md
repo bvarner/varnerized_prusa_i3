@@ -23,7 +23,7 @@ The 'development' branch will track be the next iteration of updates / upgrades.
 I'll be using the 'gitflow' strategy to track minor revisions to existing machine designs.
 
 # 1.1.1 - Lack Table Enclosure.
-Following the [prusaprinters blog post](https://blog.prusaprinters.org/cheap-simple-3d-printer-enclosure/) on building an inexpensive (hah!) enclosure for your printer I recently picked up a couple of IKEA LACK tables.
+Following the [prusaprinters blog post](https://blog.prusaprinters.org/cheap-simple-3d-printer-enclosure/) on building an inexpensive (hah!) enclosure for your printer I recently picked up a couple of Ikea LACK tables.
 After getting local quotes for producing the 440x440 and 440x220 acrylic panels, I opted to buy a set from a vendor on Amazon who could beat the locally sourced prices.
 
 * Printed Parts
@@ -31,6 +31,9 @@ After getting local quotes for producing the 440x440 and 440x220 acrylic panels,
         * Compatible with the Prusa Lack table mounting clip (mounting foot geometry is closer to the Prusa part)
         * Added Lack Table PSU retainer. Similar Style as the Prusa version.
         * Text rotates to the upside down orientation on the PSU Shroud if you're rendering the LACK table parts.
+    * [Ikea LACK Enclosure Main Parts](https://www.thingiverse.com/thing:2864118)
+    * [Frame brace replacing the PSU for the MK3](https://www.thingiverse.com/thing:2859884)
+    * [60 degree heatbed cable cover for the MK3](https://www.thingiverse.com/thing:2890592)
 
 # 1.1.0 - More MK3 less, MK2.
 Total upgrade cost was ~$75 in January 2018.
