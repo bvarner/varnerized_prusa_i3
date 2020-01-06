@@ -1,12 +1,14 @@
 cover_height = 70; // mm
 
 bottom_thickness = 2; //mm
-wall_thickness = 2.5; //mm
+wall_thickness = 1.67; //mm
 
 vent_tab_bottom = 13.5; //mm measured bottom edge of PSU to vent hole;
 vent_tab_height = 2; //mm measured opening of the vents (Actual was 2.99, but I want some 'room').
 vent_tab_width = 15; // mm Can be smaller than the width of the vent on the PSU.
 vent_cutout = 1; // 1 = yes, 0 = no.
+
+lack_table = 1; // 1 = yes, 0 = no.
 
 // PSU dimensions
 psu_width = 114; //mm
@@ -32,26 +34,26 @@ shelf_height = 27;
 module support_bracket() {
     color("purple") {
         intersection() {
-            translate([14, 0, 6.25]) cube([5, 17, 20]); 
-            translate([14, 0, (19 / 2)+ 6.25]) rotate([180, 0, 0]) rotate([0, 90, 0]) cylinder(h = 6.25, r = 19, $fn = 3);
+            translate([13.5, 0, 5]) cube([6, 17, 20]); 
+            translate([13.5, 0, (19 / 2) + 5]) rotate([180, 0, 0]) rotate([0, 90, 0]) cylinder(h = 6, r = 19, $fn = 3);
         }
         
         difference() {
-            cube([33, 17, 6.25]);
+            cube([33, 17, 5]);
             
             translate([7,0,0])
             hull() {
-                translate([0, 6.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
-                translate([0, 11.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+                translate([0, 6.5, 0]) cylinder(r = 1.75, h = 5, $fn = 48);
+                translate([0, 11.5, 0]) cylinder(r = 1.75, h = 5, $fn = 48);
             }
             
             translate([26.75, 0, 0])
             hull() {
-                translate([0, 6.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
-                translate([0, 11.5, 0]) cylinder(r = 1.75, h = 6.25, $fn = 48);
+                translate([0, 6.5, 0]) cylinder(r = 1.75, h = 5, $fn = 48);
+                translate([0, 11.5, 0]) cylinder(r = 1.75, h = 5, $fn = 48);
             }
-            translate([0, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 6.25]);
-            translate([33, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 6.25]);
+            translate([0, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 5]);
+            translate([33, 13, 0]) rotate([0, 0, 45]) cube([10, 10, 5]);
         }
     }
 }
@@ -59,14 +61,63 @@ module support_bracket() {
 difference() {
     union() {
         difference() {
-            // Main cubic area of the base.
-            color("blue")
-            cube([psu_width + wall_thickness, psu_depth + (wall_thickness * 2), cover_height]);
+            color("blue") {
+                // Main cubic area of the base.
+                cube([psu_width + wall_thickness, psu_depth + (wall_thickness * 2), cover_height]);
+                
+                // Upper retainer for using with LACK tables.
+                if (lack_table == 1) {
+                    translate([0, wall_thickness, psu_height + bottom_thickness - 50]) 
+                    difference() {
+                        translate([-4, 0, 0])
+                        union() {
+                            // Main body
+                            cube([psu_width + 5 + 4, psu_depth + wall_thickness, 50 + 5 + 25]);
+                            
+                            // Mounting tab to leg.
+                            translate([-6, psu_depth, 0]) cube([6, wall_thickness, 13]);
+                            translate([-6, psu_depth, 6.5]) rotate([-90, 0, 0]) rotate([0, 0, 30]) cylinder(d = 13, h = wall_thickness, $fn = 6);
+                        }
+                        
+                        // tab screw mount
+                        translate([-10, psu_depth, 6.5]) rotate([-90, 0, 0]) rotate([0, 0, 30]) cylinder(d = 3, h = wall_thickness);
+                        
+                        
+                        // long-side cut.
+                        cut_length = sqrt(pow(45, 2) + pow(psu_width, 2) - 2 * 45 * (psu_width) * cos(90));
+                        cut_angle = acos((pow(cut_length, 2) + pow(psu_width, 2) - pow(45, 2)) / (2 * cut_length * psu_width));
+                        rotate([0, 90 - cut_angle, 0]) cube([50, psu_depth + wall_thickness, cut_length]);
+                        
+                        // Outer end corners.
+                        translate([psu_width, 0, 45]) {
+                            rotate([0, 45, 0]) cube([50, psu_depth + wall_thickness, 50]);
+                            rotate([0, 90, 0]) cube([50, psu_depth + wall_thickness, 50]);
+                            translate([5, 0, 5]) rotate([0, -cut_angle, 0]) cube([50, psu_depth + wall_thickness, 50]);
+                        }
+                        
+                        // mostly flat top.
+                        translate([18 + 20, 0, 50 + 5]) {
+                            cube([psu_width - 38 + 5, psu_depth + wall_thickness, 45]);
+                            
+                            indent_length = sqrt(pow(25, 2) + pow(20, 2) - 2 * 25 * (20) * cos(90));
+                            indent_angle = acos((pow(indent_length, 2) + pow(20, 2) - pow(25, 2)) / (2 * indent_length * 20));
+                            
+                            translate([-20, 0, 25]) rotate([0, indent_angle, 0]) cube([indent_length, psu_depth + wall_thickness, 25]);
+                        }
+                        
+                        // Center screw mount.
+                        translate([12, (psu_depth + wall_thickness) / 2, 50 + 5 + (25 / 2)]) rotate([0, 90, 0]) {
+                            cylinder(d = 15, h = 25);
+                            translate([0, 0, -16]) cylinder(d = 5, h = 40);
+                        }
+                    }
+                }
+            }
             
             // Create the main hollow for the PSU.
             color("red")
             translate([0, wall_thickness, bottom_thickness])
-            cube([psu_width, psu_depth, psu_height]);
+#            cube([psu_width, psu_depth, psu_height]);
             
             if (vent_cutout == 1) {
                 // Create the cutout for the PSU vents on the width.
@@ -155,15 +206,21 @@ difference() {
     translate([0, 0, cover_height - 1.5]) rotate([45, 0, 0]) cube([psu_width + wall_thickness, 5, 5]);
     
     if (vent_cutout == 1) {
-        translate([16,0.25,41]) rotate([90,0,0]) linear_extrude(height = 0.4) 
-        { text("Varnerized",font = "helvetica:style=Bold", size=12, center=true, $fn = 360); }
+        translate([psu_width / 2 - wall_thickness / 2, 0.25, (bottom_thickness + iec_socket_lip + 2.5 + iec_socket_height + psu_vent_from_bottom - 18)]) rotate([90,0,0]) linear_extrude(height = 0.4) 
+        { 
+            mirror([lack_table, 0, 0]) rotate([180 * lack_table, 0, 0])
+            text("Varnerized",font = "Arial:style=Bold", size=12, valign="center", halign="center", $fn = 360); 
+        }
     } else {
         translate([4,0.25,45]) rotate([90,0,0]) linear_extrude(height = 0.4) 
-        { text("Varnerized",font = "helvetica:style=Bold", size=15.5, center=true, $fn = 360); }
+        { text("Varnerized",font = "Arial:style=Bold", size=15.5, center=true, halign="center", $fn = 360); }
     }        
     
-    translate([16, 0.25, 8]) rotate([90, 0, 0]) linear_extrude(height = 0.4)
-    {text("i3", font = "helvetica:style=Bold", size = 24, center = true, $fn = 360);}
+    translate([(psu_width - psu_vent_from_edge - iec_socket_lip - iec_socket_width) / 2, 0.25, 8 + 12]) rotate([90, 0, 0]) linear_extrude(height = 0.4)
+    {
+        mirror([lack_table, 0, 0]) rotate([180 * lack_table, 0, 0])
+        text("i3", font = "Arial:style=Bold", size = 24, valign="center", halign="center", $fn = 360);
+    }
 }
 
 
