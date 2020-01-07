@@ -34,6 +34,7 @@ After getting local quotes for producing the 440x440 and 440x220 acrylic panels,
     * [Ikea LACK Enclosure Main Parts](https://www.thingiverse.com/thing:2864118)
     * [Frame brace replacing the PSU for the MK3](https://www.thingiverse.com/thing:2859884)
     * [60 degree heatbed cable cover for the MK3](https://www.thingiverse.com/thing:2890592)
+    * [608 bearing wheels for the adjustable spool holder](https://www.thingiverse.com/thing:3791583)
 
 # 1.1.0 - More MK3 less, MK2.
 Total upgrade cost was ~$75 in January 2018.
