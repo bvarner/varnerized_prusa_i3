@@ -109,7 +109,7 @@ difference() {
                         // Center screw mount.
                         translate([12, (psu_depth + wall_thickness) / 2, 50 + 5 + (25 / 2)]) rotate([0, 90, 0]) {
                             cylinder(d = 15, h = 25);
-                            translate([0, 0, -16]) cylinder(d = 5, h = 40);
+                            translate([0, 0, -16 -lack_table_cable_clearance ]) cylinder(d = 5, h = 40 + lack_table_cable_clearance);
                         }
                     }
                 }
@@ -188,7 +188,7 @@ difference() {
     translate([psu_width - 1, wall_thickness  + psu_depth - 11, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
     translate([psu_width - 1, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r = 2, h = 5, $fn = 48);
     translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r1 = 2, r2 = 3.5, h = 1.5, $fn = 48);
-    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r = 2, r2 = 3.5, h = 1.5, $fn = 48);
+    translate([psu_width + wall_thickness - 1.5, wall_thickness + psu_depth - 11 -25, bottom_thickness + shelf_height + 30 + 4]) rotate([0, 90, 0]) cylinder(r1 = 2, r2 = 3.5, h = 1.5, $fn = 48);
     
     translate([wall_thickness * 2+ 3, psu_depth + wall_thickness, bottom_thickness + 3])
     {
