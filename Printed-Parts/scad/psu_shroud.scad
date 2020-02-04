@@ -9,6 +9,7 @@ vent_tab_width = 15; // mm Can be smaller than the width of the vent on the PSU.
 vent_cutout = 1; // 1 = yes, 0 = no.
 
 lack_table = 1; // 1 = yes, 0 = no.
+lack_table_cable_clearance = 4.75;
 
 // PSU dimensions
 psu_width = 114; //mm
@@ -69,10 +70,10 @@ difference() {
                 if (lack_table == 1) {
                     translate([0, wall_thickness, psu_height + bottom_thickness - 50]) 
                     difference() {
-                        translate([-4, 0, 0])
+                        translate([-lack_table_cable_clearance, 0, 0])
                         union() {
                             // Main body
-                            cube([psu_width + 5 + 4, psu_depth + wall_thickness, 50 + 5 + 25]);
+                            cube([psu_width + 5 + lack_table_cable_clearance, psu_depth + wall_thickness, 50 + 5 + 25]);
                             
                             // Mounting tab to leg.
                             translate([-6, psu_depth, 0]) cube([6, wall_thickness, 13]);
@@ -117,7 +118,7 @@ difference() {
             // Create the main hollow for the PSU.
             color("red")
             translate([0, wall_thickness, bottom_thickness])
-#            cube([psu_width, psu_depth, psu_height]);
+            cube([psu_width, psu_depth, psu_height]);
             
             if (vent_cutout == 1) {
                 // Create the cutout for the PSU vents on the width.
