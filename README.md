@@ -35,6 +35,18 @@ After getting local quotes for producing the 440x440 and 440x220 acrylic panels,
     * [Frame brace replacing the PSU for the MK3](https://www.thingiverse.com/thing:2859884)
     * [60 degree heatbed cable cover for the MK3](https://www.thingiverse.com/thing:2890592)
     * [608 bearing wheels for the adjustable spool holder](https://www.thingiverse.com/thing:3791583)
+    * [Prusa Enclosure Bottom Corner with more cable space](https://www.thingiverse.com/thing:3067172)
+    * [IKEA Lack Table Stack Coupler](http://www.thingiverse.com/thing:3488697)
+* Purchased Parts
+    * #12 AWG Silicone wire. So much better to work with than THHN.
+    * XT60H Connectors
+    * misc. dupont connectors & hookup wire (from the scrap bin)
+    * (3) IRLB3034 N-Channel Mosfets & 10k Ohm 0805 SMT Resistors.
+    * 12v RGB LED 5050 Strip (I had leftovers from another home project)
+* @Home Fabricated PCB For Controlling RGB LEDs
+    * Check the LEDControl directory for full KiCAD project.
+    * Perfect for home-based acid etching and SMT hand soldering.
+    * I use the 'laser-printer hot-iron transfer' method, and it works quite well.
 
 # 1.1.0 - More MK3 less, MK2.
 Total upgrade cost was ~$75 in January 2018.
