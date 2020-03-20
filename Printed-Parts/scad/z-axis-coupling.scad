@@ -4,14 +4,16 @@
 nozzle_diameter = 0.4; // Your printer nozzle diameter. Used to calculate slew on critical clearances.
 
 set_screw_length = 4;
+outer_hex = false;
 
-lead_screw_diameter = 8.2; // OD of the lead-screw.
+lead_screw_diameter = 8 + nozzle_diameter; // OD of the lead-screw.
 lead_screw_thread_size = 2; // Thread size of the lead-screw (2 for a TR8x8 or TR8x4)
 lead_screw_thread_rect = 1; // Set to 1 for rectangular threads for TR8x8.
 lead_screw_threads = 4; // 4 for TR8x8, 2 for TR8x4
 lead_screw_end_length = 14; // How much of the coupling should be dedicated to lead-screw insertion.
 
-coupling_diameter = lead_screw_diameter + (set_screw_length * 2);
+coupling_diameter = lead_screw_diameter - nozzle_diameter + (set_screw_length * 2);
+echo("Coupling Diameter: ", coupling_diameter);
 
 motor_shaft_length = 24 - 0.5; // How long is your motor shaft? Most NEMA 17s with 5mm shafts are ~24mm.
 motor_shaft_diameter = 5; // OD of motor shaft.
@@ -26,7 +28,11 @@ use <threads.scad>;
 $fn = 90;
 difference() {
     union() {
-        cylinder(d = coupling_diameter, h = motor_shaft_length + lead_screw_end_length);
+        if (outer_hex) {
+            rotate([0, 0, 30]) cylinder(d = coupling_diameter, h = motor_shaft_length + lead_screw_end_length, $fn = 6);
+        } else {
+            cylinder(d = coupling_diameter, h = motor_shaft_length + lead_screw_end_length);
+        }
         if (skirt_diameter > coupling_diameter) {
             cylinder(d1 = skirt_diameter, d2 = coupling_diameter, h = motor_shaft_length - lead_screw_end_length);
         }
