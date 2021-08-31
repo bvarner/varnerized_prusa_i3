@@ -36,12 +36,12 @@ if (sector == 1 || sector == 0) {
     union() {
         intersection() {
             layer();
-            cube([115, 230, thickness / 2]);
+            cube([100, 230, thickness / 2]);
         }
         intersection() {
             layer();
             translate([0, 0, thickness / 2])
-                cube([150, 230, thickness / 2]);
+                cube([130, 230, thickness / 2]);
         }
     }
 }
@@ -50,13 +50,13 @@ if (sector == 2 || sector == 0) {
     union() {
         intersection() {
             layer();
-            translate([115, 0, 0])
-                cube([150, 230, thickness / 2]);
+            translate([100, 0, 0])
+                cube([130, 230, thickness / 2]);
         }
         intersection() {
             layer();
-            translate([150, 0, thickness / 2])
-                cube([150, 230, thickness / 2]);
+            translate([130, 0, thickness / 2])
+                cube([100, 230, thickness / 2]);
         }
     }
 }
