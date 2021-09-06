@@ -27,17 +27,22 @@ I'll be using the 'gitflow' strategy to track minor revisions to existing machin
 Having some shore 95A flex filament to print, the MK3 extruder design is rubbish. I've had issues with part cooling, part visibility during print, z-axis adjustment, it's been a problem. Futhermore I get a lot of obvious print quality issues with linear advance and the direct drive extruder with 1/16th step division.
 The [Skelestruder](https://www.thingiverse.com/thing:2845416) is designed to address all of that, and after having it for a few weeks, it was obvious it's a superior design.
 
+Additionally, a friend of mine supplied me with a Prusa Mini+ filament sensor kit, which I've integrated into my build using 
+this [skelestruder sensor cover](https://www.thingiverse.com/thing:4235461).
+
+
 Initially I printed everything in PETG, without a silicone sock and insulation at the top of the heat block. This caused EcageS to melt a couple times, and deformed some other parts when I attempted to print Nylon at high-temperatures.
 To combat this problem, I've reprinted some parts in Polycarbonate. I purchased a 200g trial spool for a reasonable fee.
 
 * Printed Parts
     * Polycarbonate
         * SP_EcageS_r1.stl
-        * SP_Pinion16_r1.stl
         * SP_Omega_r2.stl
+        * SP_Pinion16_r1.stl
+        * SP_Pinion14_r1.stl
+        * [SP_Xclamp_mk2.stl](https://www.thingiverse.com/thing:3699231)
     * PETG
         * SP_Carriage_r1.stl
-        * [SP_Xclamp_mk2.stl](https://www.thingiverse.com/thing:3699231)
         * SP_tail_b2.stl
         * SP_EcageB_r1.stl
         * SP_EcageF17_r1.stl
@@ -52,12 +57,19 @@ To combat this problem, I've reprinted some parts in Polycarbonate. I purchased 
         * SP_tensioner_b1.stl
         * SP_knob_b2.stl
         * SP_spacer_v1a4.stl
+        * IR_Sensorcover_top.stl
+        * IR_Sensorcover_outlet.stl
+        * IR_Sensorcover_bottom.stl
+        * IR_Sensor_Arm.stl
 * Purchased Parts
     * [GT2 140-2GT-6](https://www.amazon.com/gp/product/B014QJBVOY/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
     * [Polyimide (Kapton) tape](https://www.amazon.com/gp/product/B00W3FAFP0/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1)
     * [105zz bearings](https://www.amazon.com/gp/product/B00ZHSTKCE/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1)
     * [5mmx100mm shafts](https://www.amazon.com/gp/product/B01B27MJC6/ref=ppx_yo_dt_b_asin_title_o07_s01?ie=UTF8&psc=1) I cut and shaped these with an angle grinder.
     * [12v 5015 fans](https://www.amazon.com/gp/product/B07LF1V1P1/ref=ppx_yo_dt_b_asin_title_o07_s01?ie=UTF8&psc=1) My original cooling fan died.
+    * [Prusa IR filament sensor](https://www.aliexpress.com/item/32976810546.html?spm=a2g0o.productlist.0.0.115d21ee6SdBZw&algo_pvid=dfe3353a-f8a1-4ab3-83c8-9e795aa067fe&algo_exp_id=dfe3353a-f8a1-4ab3-83c8-9e795aa067fe-0)
+    * [Heatblock Top Insulation](https://www.amazon.com/gp/product/B075CST527/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) I used this between the heatbreak and the heatblock.
+    * [Heatblock Silicone Sock](https://www.amazon.com/gp/product/B07Q3KHL6R/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1) How did I go so many years without a silicone sock?
 
 # 1.1.1 - Lack Table Enclosure.
 Following the [prusaprinters blog post](https://blog.prusaprinters.org/cheap-simple-3d-printer-enclosure/) on building an inexpensive (hah!) enclosure for your printer I recently picked up a couple of Ikea LACK tables.
