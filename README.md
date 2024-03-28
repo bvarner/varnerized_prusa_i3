@@ -1,9 +1,8 @@
 # Varnerized Prusa i3 3D Printer Clone
 
-This is a project to produce a 3d printer based upon the (very excellent) work of Mr. Josef Prusa. I'm a huge fan.
+This is a project to produce a 3d printer based upon the (very excellent) work of Mr. Josef Prusa, and the 3d printing community at large.
 
-I recently got some hands-on time with a Prusa i3 MK2 (the office got one).
-After playing with the machine at work, I found some guides online for building your own inspired by their design.
+After playing with an i3 MK2.5 my office at the time acquired I found some guides online for building your own printer inspired by the Prusa design.
 Specifically, [Tom's Dolly Build](https://toms3d.org/2017/02/23/building-cheapest-possible-prusa-i3-mk2/) was highly inspiring.
 
 I'm willing to sacrifice _some_ asthetics, a bit of performance, the 'ease' of pre-integration, and get an education for the sake of cost cutting.
@@ -12,16 +11,31 @@ As in the early heady days of the PC industry... building a 'clone' from importe
 ## Goal of the project.
 
 To clone a Prusa i3 with very similar mechanics, using import parts and cheaper, more-modular electronics.
-My initial budget for the build is $225.
+My initial budget for the build is $225. With that budget, I produced a wooden framed i3 clone, using an Arduino & RAMPS board with A4988 stepper drivers, knockoff E3D V6 hotend, and an aluminum heated bed.
+
+I have since upgraded some things considerably, in a price-conscious manner, and well behind the bleeding edge, so that I can source parts inexpensively.
 
 This isn't just an attempt to build a clone and leave it alone. In keeping with the RepRap / Prusa mentality, my desire is to build a device that allows for replicating / designing / implementing more advanced subsequent generations.
 
 ## This Repository / Branch Strategy
 
-The 'master' branch here will reflect the current (stable, functioning) state of the project, if there is one, as is.
-The 'development' branch will track be the next iteration of updates / upgrades. 
-I'll be using the 'gitflow' strategy to track minor revisions to existing machine designs.
+The 'master' branch here will reflect the current (stable, functioning) state of the project - the machine I'm currently running, or the last state of the machine.
+The 'development' branch will track be the next iteration of updates / upgrades.
 
+# 1.3 - Volcano Hotend & Belt Tensioning
+Over the years I've had problems with bearings coming loose from the x-axis ends. I held them in place with zip-ties for more than a year.
+My pancake stepper with the skelestruder gave me phenomical prints, but I had many problems with stability of the hotend holding temp during high extrusion rates or aggressive part cooling fan use.
+
+In order to print things faster (I'm sick of waiting four hours for a tiny part) and with thicker layers, I have upgraded to a Volcano knock-off hotend -- which the skelestruder supports beautifully.
+I've also decided to print my entire hotend assembly in polycarbonate, as I was having multiple parts sag over time and when printing high-temp filaments (like PC or nylon).
+
+I ended up having to upgrade to a slightly larger pancake motor, as I exceeded the torque of the tiny pancake before I exceeded the reasonable flow rate of a 0.6mm CHT volcano nozzle.
+
+A 200g spool of PC is more than enough to print the entire extruder and omega several times over.
+
+Credits to the folks who made these fantastic parts that I'm using:
+[X-Axis](https://www.printables.com/model/394668-mk225s-x-axis-revision-with-belt-tensioner)
+[Y-Axis Tensioner](https://www.printables.com/model/306303-y-axis-belt-tensioner-v2)
 
 # 1.2 - Skelestruder.
 Having some shore 95A flex filament to print, the MK3 extruder design is rubbish. I've had issues with part cooling, part visibility during print, z-axis adjustment, it's been a problem. Futhermore I get a lot of obvious print quality issues with linear advance and the direct drive extruder with 1/16th step division.
